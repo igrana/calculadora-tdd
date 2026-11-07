@@ -1,0 +1,20 @@
+{
+  "name": "calculadora-basica-tdd",
+  "version": "1.0.0",
+  "description": "Calculadora mínima con TDD (add, sub, nul, div, sqrt)",
+  "main": "calc.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  },
+  "dependencies": {
+    "chalk": "^6.0.1"
+  }
+}

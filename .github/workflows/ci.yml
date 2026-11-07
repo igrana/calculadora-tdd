@@ -1,0 +1,41 @@
+#Sintaxis tipo YAML, suele usarse en archivos de configuración
+#Nombre del flujo de trabajo:
+name: ci
+#Cuando queremos que se ejecuten los jobs:
+on:
+    push:
+        #Ejecutar el ci cuando se haga push en estas ramas.
+        branches: [develop]
+    pull_request:
+        #Ejecutar el ci cuando se haga PR en estas ramas.
+        branches: [master]
+
+#Jobs a ejecutar en GitHub Actions 
+#Crea una mini máquina virtual para ejecutar el código
+#Esto se realiza cada vez que pasamos los tests.
+jobs:
+    test:
+        #SO del servidor de la máquina virtual.
+        runs-on: ubuntu-latest
+        steps:
+            #Esto especifica que todo el código 
+            #se ejecuta en la misma máquina.
+        -   name: Checkout code
+            uses: actions/checkout@v4
+
+            #Librerías necesaria para la máquina.
+        -   name: Use Node.js 24
+            uses: actions/setup-node@v4
+            with:
+                node-version: '24'
+                cache: 'npm'
+
+            #Comando que debe usar para instalar
+            #las dependencias. Crea
+            #node_modules en la máquina.
+        -   name: Install deps (lockfile)
+            run: npm ci
+
+            #Ejecuta los tests.
+        -   name: Run tests
+            run: npm run test
