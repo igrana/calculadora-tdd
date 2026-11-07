@@ -24,7 +24,7 @@ describe('calculadora básica', () => {
     })
 
     it('raíz cuadrada', () => {
-        expect(sqrt(9)).toBe()
+        expect(sqrt(9)).toBe(3)
         expect(sqrt(2)).toBeCloseTo(Math.SQRT2, 10)
         expect(() => sqrt(-1)).toThrow(RangeError)
     })
